@@ -6,3 +6,109 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px; /*sa svih strana doda padding*/
+}
+
+.header {
+    position:relative;
+    height: 95vh; /*viewport height*/
+    background-image: linear-gradient(
+        to right bottom, 
+        #7ed56fc7,
+        #28b485d2), 
+        url('../img/hero.jpg'); /*linearni gradijent ide preko slike*/
+    background-size: cover; /*slika se prilagodi tako da sve stane u predvidjenu velicinu*/
+    background-position: top; /*vrh slike uvijek ostaje na istom  mjestu, cropa se donji dio slike ako je potrebno*/
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*rezemo donji dio slike : lijevi gore, desni gore, desni dolje, lijevi dolje*/
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%; /*u odnosu na parent element*/
+    left: 50%;
+    transform: translate(-50%, -50%); /*pomjeri se jer nije se centrirao u skladu sa centrom text boxa*/
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden; /*da ne poremeti animaciju*/
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: move-in-left;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    /*
+    animation-iteration-count: 3;
+    animation-delay: 3s;
+    */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation-name: move-in-right;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes move-in-left {
+    0% { /*pocetak animacije*/
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% { /*kraj animacije*/
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes move-in-right {
+    0% { /*pocetak animacije*/
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% { /*kraj animacije*/
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
